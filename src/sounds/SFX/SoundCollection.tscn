@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://05q2mhnx7m6x"]
+
+[ext_resource type="Script" path="res://src/sounds/SFX/sound_collection.gd" id="1_oo2hw"]
+
+[node name="SoundCollection" type="Node2D"]
+script = ExtResource("1_oo2hw")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdger3kh45xkw"]
+
+[ext_resource type="Script" path="res://src/scenes/world/fence.gd" id="1_eyeyx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n450v"]
+size = Vector2(32, 832)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3rxe"]
+size = Vector2(1430, 32)
+
+[node name="Fence" type="Node2D"]
+script = ExtResource("1_eyeyx")
+margin = 13
+
+[node name="Left" type="StaticBody2D" parent="."]
+position = Vector2(-23, 384)
+collision_layer = 256
+collision_mask = 0
+
+[node name="VerticalShape" type="CollisionShape2D" parent="Left"]
+shape = SubResource("RectangleShape2D_n450v")
+
+[node name="Right" type="StaticBody2D" parent="."]
+position = Vector2(1389, 384)
+collision_layer = 512
+collision_mask = 0
+
+[node name="VerticalShape" type="CollisionShape2D" parent="Right"]
+shape = SubResource("RectangleShape2D_n450v")
+
+[node name="Up" type="StaticBody2D" parent="."]
+position = Vector2(683, -23)
+collision_layer = 768
+collision_mask = 0
+
+[node name="HorizontalShape" type="CollisionShape2D" parent="Up"]
+shape = SubResource("RectangleShape2D_l3rxe")
+
+[node name="Down" type="StaticBody2D" parent="."]
+position = Vector2(683, 791)
+collision_layer = 768
+collision_mask = 0
+
+[node name="HorizontalShape" type="CollisionShape2D" parent="Down"]
+shape = SubResource("RectangleShape2D_l3rxe")
