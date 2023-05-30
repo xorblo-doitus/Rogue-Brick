@@ -1,6 +1,9 @@
 extends StaticBody2D
 class_name Tile
 
+
+signal destroyed(pos)
+
 @export var health: int = 1:
 	set(new):
 		health = new
@@ -14,7 +17,9 @@ class_name Tile
 
 
 func _ready() -> void:
-	health = randi_range(1, 5)
+#	health = randi_range(1, 5)
+	health = health
+	pass
 
 ## Modifies BallCollision accordingly to what happen
 func handle_ball_collision(ball: Ball, collision: BallCollision) -> void:
@@ -24,10 +29,17 @@ func handle_ball_collision(ball: Ball, collision: BallCollision) -> void:
 		if pass_on_break:
 			collision.bounce = false
 		breakSFX.play().finished.connect(queue_free)
-		collision_layer = 0
-		hide()
+		destroy()
+
 
 func update_sprite() -> void:
-	var new = str(health)
-	if sprite.sprite_frames.has_animation(new):
-		sprite.play(new)
+	if sprite:
+		var new = str(health)
+		if sprite.sprite_frames.has_animation(new):
+			sprite.play(new)
+
+
+func destroy() -> void:
+	collision_layer = 0
+	hide()
+	destroyed.emit(position)

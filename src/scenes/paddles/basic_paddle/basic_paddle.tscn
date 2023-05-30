@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://ds4g8d318di3c"]
 
-[ext_resource type="Script" path="res://src/scenes/paddles/paddle.gd" id="1_5ie7f"]
-[ext_resource type="Texture2D" uid="uid://ti2va3f2b4th" path="res://src/assets/paddles/basic_paddle_marker.png" id="2_7lomi"]
-[ext_resource type="Texture2D" uid="uid://2r1toqougou0" path="res://src/assets/paddles/basic_paddle_middle.png" id="3_orcv1"]
-[ext_resource type="Texture2D" uid="uid://cfdgmg6datusp" path="res://src/assets/paddles/basic_paddle_end.png" id="4_l5mbo"]
+[ext_resource type="Script" path="res://src/scenes/paddles/paddle.gd" id="1_v1fd8"]
+[ext_resource type="Texture2D" uid="uid://2r1toqougou0" path="res://src/assets/paddles/basic_paddle_middle.png" id="2_ha5rj"]
+[ext_resource type="Texture2D" uid="uid://cfdgmg6datusp" path="res://src/assets/paddles/basic_paddle_end.png" id="3_xmqhx"]
+[ext_resource type="Texture2D" uid="uid://ti2va3f2b4th" path="res://src/assets/paddles/basic_paddle_marker.png" id="4_erfpn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08wh5"]
 radius = 8.0
@@ -13,7 +13,7 @@ height = 256.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_orcv1")
+"texture": ExtResource("2_ha5rj")
 }],
 "loop": true,
 "name": &"default",
@@ -24,7 +24,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_l5mbo")
+"texture": ExtResource("3_xmqhx")
 }],
 "loop": true,
 "name": &"default",
@@ -35,7 +35,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7lomi")
+"texture": ExtResource("4_erfpn")
 }],
 "loop": true,
 "name": &"default",
@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [node name="BasicPaddle" type="AnimatableBody2D"]
-script = ExtResource("1_5ie7f")
+script = ExtResource("1_v1fd8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

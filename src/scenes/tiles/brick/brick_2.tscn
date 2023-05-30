@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mnr7cj0swyp3"]
+
+[ext_resource type="PackedScene" uid="uid://cbgekgx00saqh" path="res://src/scenes/tiles/brick/brick.tscn" id="1_8hp8b"]
+
+[node name="Brick_2" instance=ExtResource("1_8hp8b")]
+health = 2

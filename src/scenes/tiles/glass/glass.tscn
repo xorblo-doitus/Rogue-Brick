@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://dh6mnvioexjwo"]
+
+[ext_resource type="Script" path="res://src/scenes/tiles/tile.gd" id="1_lx36x"]
+[ext_resource type="Shape2D" uid="uid://p0urjbimkeb8" path="res://src/assets/resources/tile_shape.tres" id="2_eiijr"]
+[ext_resource type="Texture2D" uid="uid://hfuitrig1pii" path="res://src/assets/tiles/glass.png" id="3_i0mhx"]
+[ext_resource type="Texture2D" uid="uid://c8uhhxgh1aai7" path="res://src/assets/tiles/brick_2.png" id="4_cj8ge"]
+[ext_resource type="Texture2D" uid="uid://md6nsrm60cod" path="res://src/assets/tiles/brick_3.png" id="5_sligl"]
+[ext_resource type="Texture2D" uid="uid://u5buqdiw4o54" path="res://src/assets/tiles/brick_4.png" id="6_6xjk3"]
+[ext_resource type="Texture2D" uid="uid://lq10o2a4yl2p" path="res://src/assets/tiles/brick_5.png" id="7_anp2e"]
+[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="8_sruer"]
+[ext_resource type="AudioStream" uid="uid://c0t8vca6m2pp6" path="res://src/assets/sounds/SFXs/tiles/glass/break1.wav" id="9_0cmbh"]
+[ext_resource type="AudioStream" uid="uid://gfocit7v1idx" path="res://src/assets/sounds/SFXs/tiles/glass/break2.wav" id="10_d34ab"]
+[ext_resource type="AudioStream" uid="uid://e725fssayl8c" path="res://src/assets/sounds/SFXs/tiles/glass/break3.wav" id="11_ymm2c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swtcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i0mhx")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cj8ge")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_sligl")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6xjk3")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_anp2e")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}]
+
+[node name="Glass" type="StaticBody2D"]
+script = ExtResource("1_lx36x")
+pass_on_break = true
+
+[node name="Border" type="ColorRect" parent="."]
+offset_left = -33.0
+offset_top = -17.0
+offset_right = 33.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_eiijr")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_swtcp")
+animation = &"1"
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Break" type="Node2D" parent="Sounds"]
+script = ExtResource("8_sruer")
+volume_range = 0.1
+
+[node name="Break1" type="AudioStreamPlayer2D" parent="Sounds/Break"]
+stream = ExtResource("9_0cmbh")
+volume_db = -5.0
+max_distance = 1000.0
+panning_strength = 3.0
+bus = &"SFX"
+
+[node name="Break2" type="AudioStreamPlayer2D" parent="Sounds/Break"]
+stream = ExtResource("10_d34ab")
+volume_db = -5.0
+max_distance = 1000.0
+panning_strength = 3.0
+bus = &"SFX"
+
+[node name="Break3" type="AudioStreamPlayer2D" parent="Sounds/Break"]
+stream = ExtResource("11_ymm2c")
+volume_db = -5.0
+max_distance = 1000.0
+panning_strength = 3.0
+bus = &"SFX"

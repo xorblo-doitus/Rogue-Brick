@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdger3kh45xkw"]
 
-[ext_resource type="Script" path="res://src/scenes/world/fence.gd" id="1_eyeyx"]
+[ext_resource type="Script" path="res://src/scenes/world/fence.gd" id="1_843cl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n450v"]
 size = Vector2(32, 832)
@@ -9,7 +9,7 @@ size = Vector2(32, 832)
 size = Vector2(1430, 32)
 
 [node name="Fence" type="Node2D"]
-script = ExtResource("1_eyeyx")
+script = ExtResource("1_843cl")
 margin = 13
 
 [node name="Left" type="StaticBody2D" parent="."]

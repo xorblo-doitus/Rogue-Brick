@@ -1,21 +1,21 @@
 [gd_scene load_steps=12 format=3 uid="uid://cbgekgx00saqh"]
 
-[ext_resource type="Script" path="res://src/scenes/tiles/tile.gd" id="1_ynx1t"]
-[ext_resource type="Shape2D" uid="uid://p0urjbimkeb8" path="res://src/assets/resources/tile_shape.tres" id="2_u5cvr"]
-[ext_resource type="Texture2D" uid="uid://bn1jt6qsugs8e" path="res://src/assets/tiles/brick.png" id="3_1vr5e"]
-[ext_resource type="Texture2D" uid="uid://c8uhhxgh1aai7" path="res://src/assets/tiles/brick_2.png" id="4_wjcui"]
-[ext_resource type="Texture2D" uid="uid://md6nsrm60cod" path="res://src/assets/tiles/brick_3.png" id="5_lfv5b"]
-[ext_resource type="Texture2D" uid="uid://u5buqdiw4o54" path="res://src/assets/tiles/brick_4.png" id="6_oxnhq"]
-[ext_resource type="Texture2D" uid="uid://lq10o2a4yl2p" path="res://src/assets/tiles/brick_5.png" id="7_m4w7n"]
-[ext_resource type="AudioStream" uid="uid://b6qrhiekm1jpx" path="res://src/assets/sounds/SFXs/tiles/brick/break1.wav" id="9_drk6u"]
-[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="9_lg0rm"]
-[ext_resource type="AudioStream" uid="uid://dc6cpnthb3u8e" path="res://src/assets/sounds/SFXs/tiles/brick/break2.wav" id="10_7d2sf"]
+[ext_resource type="Script" path="res://src/scenes/tiles/tile.gd" id="1_2n4vw"]
+[ext_resource type="Shape2D" uid="uid://p0urjbimkeb8" path="res://src/assets/resources/tile_shape.tres" id="2_ue2m2"]
+[ext_resource type="Texture2D" uid="uid://bn1jt6qsugs8e" path="res://src/assets/tiles/brick.png" id="3_r6vlw"]
+[ext_resource type="Texture2D" uid="uid://c8uhhxgh1aai7" path="res://src/assets/tiles/brick_2.png" id="4_u6x6e"]
+[ext_resource type="Texture2D" uid="uid://md6nsrm60cod" path="res://src/assets/tiles/brick_3.png" id="5_cle3y"]
+[ext_resource type="Texture2D" uid="uid://u5buqdiw4o54" path="res://src/assets/tiles/brick_4.png" id="6_aavr7"]
+[ext_resource type="Texture2D" uid="uid://lq10o2a4yl2p" path="res://src/assets/tiles/brick_5.png" id="7_s2031"]
+[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="8_rwcos"]
+[ext_resource type="AudioStream" uid="uid://b6qrhiekm1jpx" path="res://src/assets/sounds/SFXs/tiles/brick/break1.wav" id="9_hnbof"]
+[ext_resource type="AudioStream" uid="uid://dc6cpnthb3u8e" path="res://src/assets/sounds/SFXs/tiles/brick/break2.wav" id="10_pthvu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_swtcp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_1vr5e")
+"texture": ExtResource("7_s2031")
 }],
 "loop": true,
 "name": &"1",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_wjcui")
+"texture": ExtResource("6_aavr7")
 }],
 "loop": true,
 "name": &"2",
@@ -31,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_lfv5b")
+"texture": ExtResource("5_cle3y")
 }],
 "loop": true,
 "name": &"3",
@@ -39,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_oxnhq")
+"texture": ExtResource("4_u6x6e")
 }],
 "loop": true,
 "name": &"4",
@@ -47,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_m4w7n")
+"texture": ExtResource("3_r6vlw")
 }],
 "loop": true,
 "name": &"5",
@@ -55,11 +55,19 @@ animations = [{
 }]
 
 [node name="Brick" type="StaticBody2D"]
-script = ExtResource("1_ynx1t")
-pass_on_break = true
+script = ExtResource("1_2n4vw")
+
+[node name="Border" type="ColorRect" parent="."]
+offset_left = -33.0
+offset_top = -17.0
+offset_right = 33.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = ExtResource("2_u5cvr")
+shape = ExtResource("2_ue2m2")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_swtcp")
@@ -68,17 +76,17 @@ animation = &"1"
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Break" type="Node2D" parent="Sounds"]
-script = ExtResource("9_lg0rm")
+script = ExtResource("8_rwcos")
 volume_range = 0.1
 
 [node name="Break1" type="AudioStreamPlayer2D" parent="Sounds/Break"]
-stream = ExtResource("9_drk6u")
+stream = ExtResource("9_hnbof")
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"
 
 [node name="Break2" type="AudioStreamPlayer2D" parent="Sounds/Break"]
-stream = ExtResource("10_7d2sf")
+stream = ExtResource("10_pthvu")
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"

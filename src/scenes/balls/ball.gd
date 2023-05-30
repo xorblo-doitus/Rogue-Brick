@@ -5,11 +5,17 @@ class_name Ball
 const DEFAULT_SIZE: float = 32
 
 @export var speed: float = 700.0
-@export var hardness: int = 1
+@export var hardness: int = 1:
+	set(new):
+		hardness = new
+		@warning_ignore("narrowing_conversion")
+		process_physics_priority = hardness * 10 + size / DEFAULT_SIZE
 @export var friction: float = 0.1
 @export var size: float = DEFAULT_SIZE:
 	set(new):
 		size = new
+		@warning_ignore("narrowing_conversion")
+		process_physics_priority = hardness * 10 + size / DEFAULT_SIZE
 		update_size()
 
 
@@ -56,7 +62,7 @@ func _physics_process(delta):
 		
 		if "constant_linear_velocity" in collider and not collider.constant_linear_velocity.is_zero_approx():
 			remainder = absorb_velocity(remainder, collider.constant_linear_velocity)
-		elif "velocity" in collider and not collider.velocity.is_zero_approx():
+		elif "velocity" in collider and not collider.velocity.is_zero_approx() and not collider is Ball:
 			remainder = absorb_velocity(remainder, collider.velocity)
 
 		
