@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="32"
+   viewBox="0 0 16.933333 8.4666666"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="glass.svg"
+   inkscape:export-filename="..\..\src\assets\tiles\glass.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="2.9839906"
+     inkscape:cx="170.57694"
+     inkscape:cy="33.679731"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="16.933332"
+       height="8.4666662"
+       id="page490"
+       inkscape:label="1_1" />
+    <inkscape:page
+       x="21.166666"
+       y="0"
+       width="16.933334"
+       height="8.4666662"
+       id="page492"
+       inkscape:label="1_2" />
+    <inkscape:page
+       x="42.333332"
+       y="0"
+       width="16.933334"
+       height="8.4666662"
+       id="page600"
+       inkscape:label="1_3" />
+    <inkscape:page
+       x="63.5"
+       y="0"
+       width="16.933334"
+       height="8.4666662"
+       id="page604"
+       inkscape:label="1_4" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2135">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="0"
+         id="stop2267" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.50439882"
+         id="stop2131" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop2133" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2135"
+       id="linearGradient2137"
+       x1="23.479858"
+       y1="-1.6258519"
+       x2="23.479858"
+       y2="-4.7285938"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#a5ffd6;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-miterlimit:100;stop-color:#000000"
+       id="rect426"
+       width="16.933334"
+       height="8.4666662"
+       x="0"
+       y="0" />
+    <rect
+       style="fill:#a5ffd6;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-miterlimit:100;stop-color:#000000"
+       id="rect488"
+       width="16.933334"
+       height="8.4666662"
+       x="21.166666"
+       y="0" />
+    <rect
+       style="fill:#a5ffd6;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-miterlimit:100;stop-color:#000000"
+       id="rect596"
+       width="16.933334"
+       height="8.4666662"
+       x="42.333332"
+       y="0" />
+    <rect
+       style="fill:#a5ffd6;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-miterlimit:100;stop-color:#000000"
+       id="rect598"
+       width="16.933334"
+       height="8.4666662"
+       x="63.5"
+       y="0" />
+    <rect
+       style="fill:url(#linearGradient2137);fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-linecap:round;stroke-miterlimit:100;stop-color:#000000"
+       id="rect1380"
+       width="25.204283"
+       height="3.102742"
+       x="23.479858"
+       y="-4.7285938"
+       transform="rotate(-30)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect1380"
+       id="use2287"
+       transform="translate(-0.0259838,31.806523)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use2287"
+       id="use2289"
+       transform="translate(21.166666,-6.7806338)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use2289"
+       id="use2291"
+       transform="translate(22.166904,-6.0293978)" />
+  </g>
+</svg>

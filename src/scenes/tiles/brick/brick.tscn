@@ -1,21 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbgekgx00saqh"]
+[gd_scene load_steps=13 format=3 uid="uid://cbgekgx00saqh"]
 
-[ext_resource type="Script" path="res://src/scenes/tiles/tile.gd" id="1_2n4vw"]
-[ext_resource type="Shape2D" uid="uid://p0urjbimkeb8" path="res://src/assets/resources/tile_shape.tres" id="2_ue2m2"]
-[ext_resource type="Texture2D" uid="uid://bn1jt6qsugs8e" path="res://src/assets/tiles/brick.png" id="3_r6vlw"]
-[ext_resource type="Texture2D" uid="uid://c8uhhxgh1aai7" path="res://src/assets/tiles/brick_2.png" id="4_u6x6e"]
-[ext_resource type="Texture2D" uid="uid://md6nsrm60cod" path="res://src/assets/tiles/brick_3.png" id="5_cle3y"]
-[ext_resource type="Texture2D" uid="uid://u5buqdiw4o54" path="res://src/assets/tiles/brick_4.png" id="6_aavr7"]
-[ext_resource type="Texture2D" uid="uid://lq10o2a4yl2p" path="res://src/assets/tiles/brick_5.png" id="7_s2031"]
-[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="8_rwcos"]
-[ext_resource type="AudioStream" uid="uid://b6qrhiekm1jpx" path="res://src/assets/sounds/SFXs/tiles/brick/break1.wav" id="9_hnbof"]
-[ext_resource type="AudioStream" uid="uid://dc6cpnthb3u8e" path="res://src/assets/sounds/SFXs/tiles/brick/break2.wav" id="10_pthvu"]
+[ext_resource type="Script" path="res://src/scenes/tiles/tile.gd" id="1_3ufih"]
+[ext_resource type="Shape2D" uid="uid://p0urjbimkeb8" path="res://src/assets/resources/tile_shape.tres" id="2_q1j6r"]
+[ext_resource type="Texture2D" uid="uid://cpekv2jli0gko" path="res://src/assets/tiles/brick_1.png" id="3_7as8v"]
+[ext_resource type="Texture2D" uid="uid://c8uhhxgh1aai7" path="res://src/assets/tiles/brick_2.png" id="4_men0h"]
+[ext_resource type="Texture2D" uid="uid://md6nsrm60cod" path="res://src/assets/tiles/brick_3.png" id="5_2q3vu"]
+[ext_resource type="Texture2D" uid="uid://u5buqdiw4o54" path="res://src/assets/tiles/brick_4.png" id="6_0sgki"]
+[ext_resource type="Texture2D" uid="uid://lq10o2a4yl2p" path="res://src/assets/tiles/brick_5.png" id="7_yks3n"]
+[ext_resource type="Texture2D" uid="uid://bn1jt6qsugs8e" path="res://src/assets/tiles/brick.png" id="8_xxa33"]
+[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="9_mya2l"]
+[ext_resource type="AudioStream" uid="uid://b6qrhiekm1jpx" path="res://src/assets/sounds/SFXs/tiles/brick/break1.wav" id="10_lofra"]
+[ext_resource type="AudioStream" uid="uid://dc6cpnthb3u8e" path="res://src/assets/sounds/SFXs/tiles/brick/break2.wav" id="11_lt88x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_swtcp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_s2031")
+"texture": ExtResource("3_7as8v")
 }],
 "loop": true,
 "name": &"1",
@@ -23,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_aavr7")
+"texture": ExtResource("4_men0h")
 }],
 "loop": true,
 "name": &"2",
@@ -31,7 +32,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_cle3y")
+"texture": ExtResource("5_2q3vu")
 }],
 "loop": true,
 "name": &"3",
@@ -39,7 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_u6x6e")
+"texture": ExtResource("6_0sgki")
 }],
 "loop": true,
 "name": &"4",
@@ -47,46 +48,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_r6vlw")
+"texture": ExtResource("7_yks3n")
 }],
 "loop": true,
 "name": &"5",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xxa33")
+}],
+"loop": true,
+"name": &"old",
+"speed": 5.0
 }]
 
 [node name="Brick" type="StaticBody2D"]
-script = ExtResource("1_2n4vw")
+script = ExtResource("1_3ufih")
 
 [node name="Border" type="ColorRect" parent="."]
-offset_left = -33.0
-offset_top = -17.0
-offset_right = 33.0
-offset_bottom = 17.0
+z_index = -100
+offset_left = -34.0
+offset_top = -18.0
+offset_right = 34.0
+offset_bottom = 18.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = ExtResource("2_ue2m2")
+shape = ExtResource("2_q1j6r")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_swtcp")
-animation = &"1"
+animation = &"5"
 
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Break" type="Node2D" parent="Sounds"]
-script = ExtResource("8_rwcos")
+script = ExtResource("9_mya2l")
 volume_range = 0.1
 
 [node name="Break1" type="AudioStreamPlayer2D" parent="Sounds/Break"]
-stream = ExtResource("9_hnbof")
+stream = ExtResource("10_lofra")
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"
 
 [node name="Break2" type="AudioStreamPlayer2D" parent="Sounds/Break"]
-stream = ExtResource("10_pthvu")
+stream = ExtResource("11_lt88x")
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"
