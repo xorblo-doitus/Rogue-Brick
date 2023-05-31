@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c88ln6b4xiui"]
+
+[ext_resource type="Script" path="res://src/scenes/tiles/tile.gd" id="1_wpkvu"]
+[ext_resource type="Shape2D" uid="uid://p0urjbimkeb8" path="res://src/assets/resources/tile_shape.tres" id="2_yjdxa"]
+[ext_resource type="Texture2D" uid="uid://btk271e0heuq2" path="res://icon.svg" id="3_6kfo7"]
+[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="9_3e53a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swtcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6kfo7")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
+[node name="Tile" type="StaticBody2D"]
+script = ExtResource("1_wpkvu")
+
+[node name="Border" type="ColorRect" parent="."]
+z_index = -100
+offset_left = -34.0
+offset_top = -18.0
+offset_right = 34.0
+offset_bottom = 18.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_yjdxa")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_swtcp")
+animation = &"1"
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Break" type="Node2D" parent="Sounds"]
+script = ExtResource("9_3e53a")
+volume_range = 0.1

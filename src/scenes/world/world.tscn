@@ -1,73 +1,34 @@
-[gd_scene load_steps=18 format=3 uid="uid://ciceafugib0p4"]
+[gd_scene load_steps=7 format=3 uid="uid://ciceafugib0p4"]
 
-[ext_resource type="Script" path="res://src/scenes/world/world.gd" id="1_qj08o"]
-[ext_resource type="PackedScene" uid="uid://c06w0vwoxco6x" path="res://src/scenes/balls/basic_ball/basic_ball.tscn" id="2_b6mmr"]
-[ext_resource type="PackedScene" uid="uid://bdger3kh45xkw" path="res://src/scenes/world/fence.tscn" id="3_oxl7y"]
-[ext_resource type="Texture2D" uid="uid://btk271e0heuq2" path="res://icon.svg" id="4_p8dp1"]
-[ext_resource type="PackedScene" uid="uid://cbgekgx00saqh" path="res://src/scenes/tiles/brick/brick.tscn" id="5_1f2b1"]
-[ext_resource type="PackedScene" uid="uid://1yyg16knk828" path="res://src/scenes/tiles/brick/brick_1.tscn" id="6_un1j5"]
-[ext_resource type="PackedScene" uid="uid://mnr7cj0swyp3" path="res://src/scenes/tiles/brick/brick_2.tscn" id="7_6aghf"]
-[ext_resource type="PackedScene" uid="uid://02pdrbagobrw" path="res://src/scenes/tiles/brick/brick_3.tscn" id="8_s4nsl"]
-[ext_resource type="PackedScene" uid="uid://c85eqp0yp3viq" path="res://src/scenes/tiles/brick/brick_4.tscn" id="9_66oph"]
-[ext_resource type="PackedScene" uid="uid://gjpp8mshkkyn" path="res://src/scenes/tiles/brick/brick_5.tscn" id="10_pj67f"]
-[ext_resource type="PackedScene" uid="uid://dh6mnvioexjwo" path="res://src/scenes/tiles/glass/glass.tscn" id="11_oi3l5"]
-[ext_resource type="Script" path="res://src/scenes/world/proxy_tilemap.gd" id="12_sjj24"]
-[ext_resource type="PackedScene" uid="uid://ds4g8d318di3c" path="res://src/scenes/paddles/basic_paddle/basic_paddle.tscn" id="13_qgmdc"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5altk"]
-texture = ExtResource("4_p8dp1")
-texture_region_size = Vector2i(64, 32)
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_socg1"]
-resource_name = "Brick"
-scenes/0/scene = ExtResource("5_1f2b1")
-scenes/1/scene = ExtResource("6_un1j5")
-scenes/2/scene = ExtResource("7_6aghf")
-scenes/3/scene = ExtResource("8_s4nsl")
-scenes/4/scene = ExtResource("9_66oph")
-scenes/5/scene = ExtResource("10_pj67f")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hg78f"]
-resource_name = "Glass"
-scenes/0/scene = ExtResource("11_oi3l5")
-
-[sub_resource type="TileSet" id="TileSet_8uslk"]
-tile_shape = 2
-tile_size = Vector2i(64, 32)
-sources/1 = SubResource("TileSetScenesCollectionSource_socg1")
-sources/0 = SubResource("TileSetAtlasSource_5altk")
-sources/2 = SubResource("TileSetScenesCollectionSource_hg78f")
+[ext_resource type="Script" path="res://src/scenes/world/world.gd" id="1_danfa"]
+[ext_resource type="PackedScene" uid="uid://c06w0vwoxco6x" path="res://src/scenes/balls/basic_ball/basic_ball.tscn" id="2_36x5o"]
+[ext_resource type="PackedScene" uid="uid://bdger3kh45xkw" path="res://src/scenes/world/fence.tscn" id="3_r62j8"]
+[ext_resource type="TileSet" uid="uid://ba77edulvbi6c" path="res://src/scenes/world/main_tile_set.tres" id="4_wug6p"]
+[ext_resource type="Script" path="res://src/scenes/world/proxy_tilemap.gd" id="5_4xbwa"]
+[ext_resource type="PackedScene" uid="uid://ds4g8d318di3c" path="res://src/scenes/paddles/basic_paddle/basic_paddle.tscn" id="6_b42fl"]
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_qj08o")
+script = ExtResource("1_danfa")
 
-[node name="basic_ball" parent="." instance=ExtResource("2_b6mmr")]
+[node name="basic_ball" parent="." instance=ExtResource("2_36x5o")]
 position = Vector2(589, 613)
 size = 16.0
 
-[node name="Fence" parent="." instance=ExtResource("3_oxl7y")]
+[node name="Fence" parent="." instance=ExtResource("3_r62j8")]
 margin = 0
 width = 32
 collision_layer = 1
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_8uslk")
+tile_set = ExtResource("4_wug6p")
 format = 2
-script = ExtResource("12_sjj24")
+script = ExtResource("5_4xbwa")
 
 [node name="Spawn" type="Timer" parent="TileMap"]
 wait_time = 10.0
 autostart = true
 
-[node name="BasicPaddle" parent="." instance=ExtResource("13_qgmdc")]
+[node name="BasicPaddle" parent="." instance=ExtResource("6_b42fl")]
 position = Vector2(698, 755)
 
 [connection signal="timeout" from="TileMap/Spawn" to="TileMap" method="grow"]

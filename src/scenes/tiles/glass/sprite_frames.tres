@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cltp0t78x3hid"]
+
+[ext_resource type="Texture2D" uid="uid://b64tpog0i0ll2" path="res://src/assets/tiles/glass_1_1.png" id="1_xfmon"]
+[ext_resource type="Texture2D" uid="uid://cmcf4b5v0uke3" path="res://src/assets/tiles/glass_1_2.png" id="2_gownn"]
+[ext_resource type="Texture2D" uid="uid://dwhisc5laci7c" path="res://src/assets/tiles/glass_1_3.png" id="3_wqjin"]
+[ext_resource type="Texture2D" uid="uid://rnafomqw1s00" path="res://src/assets/tiles/glass_1_4.png" id="4_37gq2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xfmon")
+}, {
+"duration": 0.1,
+"texture": ExtResource("2_gownn")
+}, {
+"duration": 0.1,
+"texture": ExtResource("3_wqjin")
+}, {
+"duration": 0.1,
+"texture": ExtResource("4_37gq2")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
