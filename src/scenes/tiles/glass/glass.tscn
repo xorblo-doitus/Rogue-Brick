@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://e725fssayl8c" path="res://src/assets/sounds/SFXs/tiles/glass/break3.wav" id="6_371ih"]
 
 [node name="Tile" instance=ExtResource("1_yqhvf")]
+pass_on_break = true
 
 [node name="Sprite" parent="." index="2"]
 sprite_frames = ExtResource("2_5mmpq")
