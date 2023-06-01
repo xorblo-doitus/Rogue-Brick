@@ -8,7 +8,7 @@
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("1_xfmon")
 }, {
 "duration": 0.1,
