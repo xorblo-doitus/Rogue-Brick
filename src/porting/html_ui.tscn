@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://ulp2wfe075yj"]
+
+[sub_resource type="GDScript" id="GDScript_t60qd"]
+script/source = "extends Button
+
+
+
+
+func _on_button_up() -> void:
+	Input.action_press(\"fullscreen\")
+"
+
+[node name="HTML_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fullscreen" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "F11"
+script = SubResource("GDScript_t60qd")
+
+[connection signal="button_up" from="Fullscreen" to="Fullscreen" method="_on_button_up"]

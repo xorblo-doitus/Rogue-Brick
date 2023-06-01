@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Dev="res://src/singletons/dev.gd"
 Wait="*res://src/singletons/wait.gd"
 GlobalInputs="*res://src/singletons/global_inputs.gd"
+HTML="res://src/singletons/platform_specific/html.gd"
 
 [display]
 
