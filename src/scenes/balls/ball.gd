@@ -33,7 +33,7 @@ func _ready():
 	launch(PI/2)
 
 func _physics_process(delta):
-	var remainder = velocity * delta
+	var remainder: Vector2 = velocity * delta
 	
 	if Input.is_action_pressed("debug_rotate"):
 		remainder = remainder.rotated(PI * delta)
@@ -58,7 +58,10 @@ func _physics_process(delta):
 			bounceSFX.play()
 		
 		if ball_collision.deviation:
-			remainder = ST.align(remainder, remainder + collision.get_normal().rotated(PI/2) * ball_collision.deviation)
+#			remainder = ST.align(remainder, remainder + collision.get_normal().rotated(PI/2) * ball_collision.deviation)
+			remainder = remainder.rotated(ball_collision.deviation)
+			if remainder.angle_to(collision.get_normal()) > ball_collision.max_angle:
+				remainder = remainder.rotated(remainder.angle_to(collision.get_normal()) - ball_collision.max_angle)
 		
 		if "constant_linear_velocity" in collider and not collider.constant_linear_velocity.is_zero_approx():
 			remainder = absorb_velocity(remainder, collider.constant_linear_velocity)

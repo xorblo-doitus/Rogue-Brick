@@ -2,6 +2,8 @@ extends AnimatableBody2D
 class_name Paddle
 
 const SPRITE_PART_SIZE: int = 16
+## [member BallCollision.max_angle]
+const MAX_ANGLE: float = PI / 2 - deg_to_rad(10)
 
 @export var speed: float = 500
 @export var size: float = 256:
@@ -12,8 +14,8 @@ const SPRITE_PART_SIZE: int = 16
 	set(new):
 		dead_zone = new
 		update_sprite()
-@export var deviation_amount: float = 50
-@export var deviation_exp: float = 2
+@export var deviation_amount: float = PI / 4.0
+@export var deviation_exp: float = 1
 
 ## Local to scene
 @onready var shape: CapsuleShape2D = $CollisionShape2D.shape
@@ -48,10 +50,16 @@ func _physics_process(delta) -> void:
 
 
 func handle_ball_collision(ball: Ball, collision: BallCollision) -> void:
+	collision.max_angle = MAX_ANGLE
+	print_stack()
+	print("blass collision")
+	print(collision.get_normal())
 	var x = to_local(collision.get_position()).x
 	var deviation_scalar: float = abs(x) - size * dead_zone / 2
 	if deviation_scalar > 0:
+		print(deviation_scalar / (size - size * dead_zone / 2))
 		collision.deviation = (deviation_scalar / (size - size * dead_zone / 2)) ** deviation_exp * deviation_amount * sign(x)
+#		collision.deviation = (deviation_scalar / (size - size * dead_zone / 2)) ** deviation_exp * deviation_amount * sign(x)
 
 
 func update_size() -> void:
