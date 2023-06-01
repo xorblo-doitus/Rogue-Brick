@@ -35,7 +35,7 @@ func _ready():
 func _physics_process(delta):
 	var remainder: Vector2 = velocity * delta
 	
-	if Input.is_action_pressed("debug_rotate"):
+	if OS.is_debug_build() and Input.is_action_pressed("debug_rotate"):
 		remainder = remainder.rotated(PI * delta)
 	
 	# Repeat collision handling not infinitely
