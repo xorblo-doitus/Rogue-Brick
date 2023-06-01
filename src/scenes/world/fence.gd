@@ -6,11 +6,11 @@ extends Node2D
 	set(new):
 		margin = new
 		change()
-## L'épaisseur de la bordure
-@export_range(1, 50, 1, "or_greater", "suffix:px") var width: int = 20:
-	set(new):
-		width = new
-		change()
+### L'épaisseur de la bordure
+#@export_range(1, 50, 1, "or_greater", "suffix:px") var width: int = 20:
+#	set(new):
+#		width = new
+#		change()
 
 @export_flags_2d_physics var collision_layer: int:
 	set(new):
@@ -25,13 +25,13 @@ func change(can_change: bool = Engine.is_editor_hint() and is_ready):
 	if not can_change:
 		return
 	
-	$Up/HorizontalShape.shape.size = Vector2i(ST.get_screen_width() + 2*(width+margin), width)
-	$Up.position = Vector2(ST.get_screen_width()/2., -margin -width/2.)
-	$Down.position = Vector2(ST.get_screen_width()/2., margin + ST.get_screen_height() + width/2.)
-	
-	$Right/VerticalShape.shape.size = Vector2i(width, ST.get_screen_height() + 2*(width+margin))
-	$Left.position = Vector2(-margin - width/2., ST.get_screen_height()/2.)
-	$Right.position = Vector2(margin + ST.get_screen_width() + width/2., ST.get_screen_height()/2.)
+#	$Up/HorizontalShape.shape.size = Vector2i(ST.get_screen_width() + 2*(width+margin), width)
+	$Up.position = Vector2(ST.get_screen_width()/2., -margin)
+	$Down.position = Vector2(ST.get_screen_width()/2., margin + ST.get_screen_height())
+#
+#	$Right/VerticalShape.shape.size = Vector2i(width, ST.get_screen_height() + 2*(width+margin))
+	$Left.position = Vector2(-margin, ST.get_screen_height()/2.)
+	$Right.position = Vector2(margin + ST.get_screen_width(), ST.get_screen_height()/2.)
 	
 	
 func _ready():

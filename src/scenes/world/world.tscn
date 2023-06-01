@@ -1,34 +1,32 @@
 [gd_scene load_steps=7 format=3 uid="uid://ciceafugib0p4"]
 
-[ext_resource type="Script" path="res://src/scenes/world/world.gd" id="1_danfa"]
-[ext_resource type="PackedScene" uid="uid://c06w0vwoxco6x" path="res://src/scenes/balls/basic_ball/basic_ball.tscn" id="2_36x5o"]
-[ext_resource type="PackedScene" uid="uid://bdger3kh45xkw" path="res://src/scenes/world/fence.tscn" id="3_r62j8"]
-[ext_resource type="TileSet" uid="uid://ba77edulvbi6c" path="res://src/scenes/world/main_tile_set.tres" id="4_wug6p"]
-[ext_resource type="Script" path="res://src/scenes/world/proxy_tilemap.gd" id="5_4xbwa"]
-[ext_resource type="PackedScene" uid="uid://ds4g8d318di3c" path="res://src/scenes/paddles/basic_paddle/basic_paddle.tscn" id="6_b42fl"]
+[ext_resource type="Script" path="res://src/scenes/world/world.gd" id="1_cymi7"]
+[ext_resource type="PackedScene" uid="uid://c06w0vwoxco6x" path="res://src/scenes/balls/basic_ball/basic_ball.tscn" id="2_ugybi"]
+[ext_resource type="PackedScene" uid="uid://bdger3kh45xkw" path="res://src/scenes/world/fence.tscn" id="3_oa075"]
+[ext_resource type="TileSet" uid="uid://ba77edulvbi6c" path="res://src/scenes/world/main_tile_set.tres" id="4_a3yy0"]
+[ext_resource type="Script" path="res://src/scenes/world/proxy_tilemap.gd" id="5_4y24y"]
+[ext_resource type="PackedScene" uid="uid://ds4g8d318di3c" path="res://src/scenes/paddles/basic_paddle/basic_paddle.tscn" id="6_6aes6"]
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_danfa")
+script = ExtResource("1_cymi7")
 
-[node name="basic_ball" parent="." instance=ExtResource("2_36x5o")]
+[node name="basic_ball" parent="." instance=ExtResource("2_ugybi")]
 position = Vector2(589, 613)
 size = 16.0
 
-[node name="Fence" parent="." instance=ExtResource("3_r62j8")]
-margin = 0
-width = 32
+[node name="Fence" parent="." instance=ExtResource("3_oa075")]
 collision_layer = 1
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("4_wug6p")
+tile_set = ExtResource("4_a3yy0")
 format = 2
-script = ExtResource("5_4xbwa")
+script = ExtResource("5_4y24y")
 
 [node name="Spawn" type="Timer" parent="TileMap"]
 wait_time = 10.0
 autostart = true
 
-[node name="BasicPaddle" parent="." instance=ExtResource("6_b42fl")]
+[node name="BasicPaddle" parent="." instance=ExtResource("6_6aes6")]
 position = Vector2(698, 755)
 
 [connection signal="timeout" from="TileMap/Spawn" to="TileMap" method="grow"]
