@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://c06w0vwoxco6x"]
 
-[ext_resource type="Script" path="res://src/scenes/balls/ball.gd" id="1_t5a5h"]
-[ext_resource type="Texture2D" uid="uid://dr21cay8gydji" path="res://src/assets/balls/basic_ball.png" id="2_g0e80"]
-[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="3_aji2w"]
-[ext_resource type="AudioStream" uid="uid://dbsslwu5m20ux" path="res://src/assets/sounds/SFXs/ball/bounce/bounce1.wav" id="4_t2uox"]
-[ext_resource type="AudioStream" uid="uid://dmwxak4lm4d6p" path="res://src/assets/sounds/SFXs/ball/bounce/bounce2.wav" id="5_jpa8v"]
-[ext_resource type="AudioStream" uid="uid://bh6l76hj7667v" path="res://src/assets/sounds/SFXs/ball/bounce/bounce3.wav" id="6_6a6na"]
+[ext_resource type="Script" path="res://src/scenes/balls/ball.gd" id="1_57kb4"]
+[ext_resource type="Texture2D" uid="uid://dr21cay8gydji" path="res://src/assets/balls/basic_ball.png" id="2_ji6qe"]
+[ext_resource type="Script" path="res://addons/randaudioplayer/sound_collection_2d.gd" id="3_m2ra7"]
+[ext_resource type="AudioStream" uid="uid://dbsslwu5m20ux" path="res://src/assets/sounds/SFXs/ball/bounce/bounce1.wav" id="4_m26l0"]
+[ext_resource type="AudioStream" uid="uid://dmwxak4lm4d6p" path="res://src/assets/sounds/SFXs/ball/bounce/bounce2.wav" id="5_s7gj2"]
+[ext_resource type="AudioStream" uid="uid://bh6l76hj7667v" path="res://src/assets/sounds/SFXs/ball/bounce/bounce3.wav" id="6_jkxrq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tyc8e"]
 radius = 16.0
@@ -14,7 +14,7 @@ radius = 16.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_g0e80")
+"texture": ExtResource("2_ji6qe")
 }],
 "loop": true,
 "name": &"default",
@@ -23,7 +23,7 @@ animations = [{
 
 [node name="BasicBall" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_t5a5h")
+script = ExtResource("1_57kb4")
 speed = 500.0
 max_speed = 600.0
 
@@ -37,24 +37,24 @@ sprite_frames = SubResource("SpriteFrames_fo4dp")
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Bounce" type="Node2D" parent="Sounds"]
-script = ExtResource("3_b2o40")
+script = ExtResource("3_m2ra7")
 
 [node name="Bounce1" type="AudioStreamPlayer2D" parent="Sounds/Bounce"]
-stream = ExtResource("4_sdcqk")
+stream = ExtResource("4_m26l0")
 volume_db = -10.0
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"
 
 [node name="Bounce2" type="AudioStreamPlayer2D" parent="Sounds/Bounce"]
-stream = ExtResource("5_41olu")
+stream = ExtResource("5_s7gj2")
 volume_db = -10.0
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"
 
 [node name="Bounce3" type="AudioStreamPlayer2D" parent="Sounds/Bounce"]
-stream = ExtResource("6_lk0ja")
+stream = ExtResource("6_jkxrq")
 volume_db = -10.0
 max_distance = 1000.0
 panning_strength = 3.0
