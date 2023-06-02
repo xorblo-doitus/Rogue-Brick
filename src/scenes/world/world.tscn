@@ -28,7 +28,6 @@ autostart = true
 
 [node name="BasicPaddle" parent="." instance=ExtResource("6_6aes6")]
 position = Vector2(698, 755)
-dead_zone = 0.3
 deviation_amount = 0.785
 
 [connection signal="timeout" from="TileMap/Spawn" to="TileMap" method="grow"]

@@ -8,6 +8,9 @@ var deviation: float = 0
 ## The maximum angle to the collision normal the bounce can go, this prevent a deviation
 ## wich would make the velocity point back to the collided object
 var max_angle: float = 90
+## The part of current difference between ball's speed and current ball's moving speed
+## that will be removed
+var speed_adjustment: float = 0.5
 
 func _init(_kinematic_collision: KinematicCollision2D) -> void:
 	kinematic_collision = _kinematic_collision

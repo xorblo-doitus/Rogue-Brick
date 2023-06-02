@@ -46,18 +46,15 @@ func _physics_process(delta) -> void:
 		global_position.y
 	)
 	global_position = stop
-	velocity = stop - start
+	velocity = (stop - start) / delta
 
 
 func handle_ball_collision(ball: Ball, collision: BallCollision) -> void:
 	collision.max_angle = MAX_ANGLE
-	print_stack()
-	print("blass collision")
-	print(collision.get_normal())
+	
 	var x = to_local(collision.get_position()).x
 	var deviation_scalar: float = abs(x) - size * dead_zone / 2
 	if deviation_scalar > 0:
-		print(deviation_scalar / (size - size * dead_zone / 2))
 		collision.deviation = (deviation_scalar / (size - size * dead_zone / 2)) ** deviation_exp * deviation_amount * sign(x)
 #		collision.deviation = (deviation_scalar / (size - size * dead_zone / 2)) ** deviation_exp * deviation_amount * sign(x)
 

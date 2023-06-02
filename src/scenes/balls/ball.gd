@@ -3,8 +3,10 @@ class_name Ball
 
 
 const DEFAULT_SIZE: float = 32
+const MIN_SPEED: float = 100
 
 @export var speed: float = 700.0
+@export var max_speed: float = 2000.0
 @export var hardness: int = 1:
 	set(new):
 		hardness = new
@@ -17,7 +19,6 @@ const DEFAULT_SIZE: float = 32
 		@warning_ignore("narrowing_conversion")
 		process_physics_priority = hardness * 10 + size / DEFAULT_SIZE
 		update_size()
-
 
 ## Local to scene
 @onready var shape: CircleShape2D = $CollisionShape2D.shape
@@ -33,6 +34,7 @@ func _ready():
 	launch(PI/2)
 
 func _physics_process(delta):
+	cap_velocity()
 	var remainder: Vector2 = velocity * delta
 	
 	if OS.is_debug_build() and Input.is_action_pressed("debug_rotate"):
@@ -60,14 +62,19 @@ func _physics_process(delta):
 		if ball_collision.deviation:
 #			remainder = ST.align(remainder, remainder + collision.get_normal().rotated(PI/2) * ball_collision.deviation)
 			remainder = remainder.rotated(ball_collision.deviation)
-			if remainder.angle_to(collision.get_normal()) > ball_collision.max_angle:
-				remainder = remainder.rotated(remainder.angle_to(collision.get_normal()) - ball_collision.max_angle)
+		
+		adjust_speed(ball_collision.speed_adjustment)
 		
 		if "constant_linear_velocity" in collider and not collider.constant_linear_velocity.is_zero_approx():
 			remainder = absorb_velocity(remainder, collider.constant_linear_velocity)
 		elif "velocity" in collider and not collider.velocity.is_zero_approx() and not collider is Ball:
 			remainder = absorb_velocity(remainder, collider.velocity)
-
+		
+		print("start ", rad_to_deg(remainder.angle_to(collision.get_normal())))
+		prints(collision.get_normal(), remainder)
+		if abs(remainder.angle_to(collision.get_normal())) > ball_collision.max_angle:
+			remainder = remainder.rotated(remainder.angle_to(collision.get_normal()) - (ball_collision.max_angle * sign(remainder.angle_to(collision.get_normal()))))
+		print(rad_to_deg(remainder.angle_to(collision.get_normal())))
 		
 	push_warning("Unterminated collision handling.")
 
@@ -76,13 +83,45 @@ func _physics_process(delta):
 #	if collider.get_collider() is Tile:
 #		return collider.get_collider()
 
-func launch(dir) -> void:
+
+# Move current speed towards
+func adjust_speed(adjustment: float = 0.5) -> void:
+#	velocity = velocity.move_toward(
+#		velocity.normalized() * speed,
+#		adjustment * (velocity.length() - (velocity.normalized() * speed).length())
+#	)
+	velocity = (
+		velocity.normalized()
+		* (
+			velocity.length() * (1-adjustment)
+			 + speed * adjustment
+		)
+	)
+
+
+func cap_velocity() -> void:
+	if velocity.length() == 0:
+		launch()
+	elif velocity.length() > max_speed:
+		velocity *= max_speed / velocity.length()
+	elif velocity.length() < MIN_SPEED:
+		velocity *= MIN_SPEED / velocity.length()
+
+
+func launch(dir: float = -PI/4) -> void:
 	velocity = Vector2(speed, 0).rotated(dir)
 
 
 func absorb_velocity(remainder: Vector2, other_velocity: Vector2) -> Vector2:
-	var new_remainder = remainder + other_velocity * friction
-	return new_remainder
+#	var new = velocity + other_velocity * friction
+#	velocity *= (new.length() / velocity.length())
+	velocity = ST.align(velocity, remainder)
+	print("vel ", velocity)
+	velocity += other_velocity * friction
+	print(velocity)
+	prints("rem", remainder, ST.align(remainder, velocity))
+	return ST.align(remainder, velocity)
+#	return remainder # Changing remainder cause too much TPing
 
 
 func update_size() -> void:

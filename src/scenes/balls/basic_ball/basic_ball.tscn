@@ -25,6 +25,7 @@ animations = [{
 motion_mode = 1
 script = ExtResource("1_t5a5h")
 speed = 500.0
+max_speed = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tyc8e")
@@ -36,24 +37,24 @@ sprite_frames = SubResource("SpriteFrames_fo4dp")
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Bounce" type="Node2D" parent="Sounds"]
-script = ExtResource("3_aji2w")
+script = ExtResource("3_b2o40")
 
 [node name="Bounce1" type="AudioStreamPlayer2D" parent="Sounds/Bounce"]
-stream = ExtResource("4_t2uox")
+stream = ExtResource("4_sdcqk")
 volume_db = -10.0
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"
 
 [node name="Bounce2" type="AudioStreamPlayer2D" parent="Sounds/Bounce"]
-stream = ExtResource("5_jpa8v")
+stream = ExtResource("5_41olu")
 volume_db = -10.0
 max_distance = 1000.0
 panning_strength = 3.0
 bus = &"SFX"
 
 [node name="Bounce3" type="AudioStreamPlayer2D" parent="Sounds/Bounce"]
-stream = ExtResource("6_6a6na")
+stream = ExtResource("6_lk0ja")
 volume_db = -10.0
 max_distance = 1000.0
 panning_strength = 3.0
