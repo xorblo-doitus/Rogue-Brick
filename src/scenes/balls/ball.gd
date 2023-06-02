@@ -71,11 +71,9 @@ func _physics_process(delta):
 		elif "velocity" in collider and not collider.velocity.is_zero_approx() and not collider is Ball:
 			remainder = absorb_velocity(remainder, collider.velocity)
 		
-		print("start ", rad_to_deg(remainder.angle_to(collision.get_normal())))
-		prints(collision.get_normal(), remainder)
 		if abs(remainder.angle_to(collision.get_normal())) > ball_collision.max_angle:
 			remainder = remainder.rotated(remainder.angle_to(collision.get_normal()) - (ball_collision.max_angle * sign(remainder.angle_to(collision.get_normal()))))
-		print(rad_to_deg(remainder.angle_to(collision.get_normal())))
+		
 		
 	push_warning("Unterminated collision handling.")
 
@@ -117,10 +115,8 @@ func absorb_velocity(remainder: Vector2, other_velocity: Vector2) -> Vector2:
 #	var new = velocity + other_velocity * friction
 #	velocity *= (new.length() / velocity.length())
 	velocity = ST.align(velocity, remainder)
-	print("vel ", velocity)
 	velocity += other_velocity * friction
-	print(velocity)
-	prints("rem", remainder, ST.align(remainder, velocity))
+	
 	return ST.align(remainder, velocity)
 #	return remainder # Changing remainder cause too much TPing
 
