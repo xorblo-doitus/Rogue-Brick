@@ -1,16 +1,17 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://ba77edulvbi6c"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://ba77edulvbi6c"]
 
-[ext_resource type="Texture2D" uid="uid://btk271e0heuq2" path="res://icon.svg" id="1_hjudt"]
-[ext_resource type="PackedScene" uid="uid://cbgekgx00saqh" path="res://src/scenes/tiles/brick/brick.tscn" id="2_ro2ca"]
-[ext_resource type="PackedScene" uid="uid://1yyg16knk828" path="res://src/scenes/tiles/brick/brick_1.tscn" id="3_fjyh7"]
-[ext_resource type="PackedScene" uid="uid://mnr7cj0swyp3" path="res://src/scenes/tiles/brick/brick_2.tscn" id="4_bkwmi"]
-[ext_resource type="PackedScene" uid="uid://02pdrbagobrw" path="res://src/scenes/tiles/brick/brick_3.tscn" id="5_pf0a1"]
-[ext_resource type="PackedScene" uid="uid://c85eqp0yp3viq" path="res://src/scenes/tiles/brick/brick_4.tscn" id="6_k8iu3"]
-[ext_resource type="PackedScene" uid="uid://gjpp8mshkkyn" path="res://src/scenes/tiles/brick/brick_5.tscn" id="7_oqs8c"]
-[ext_resource type="PackedScene" uid="uid://c4dsesp8wkoqk" path="res://src/scenes/tiles/glass/glass.tscn" id="8_usxk8"]
+[ext_resource type="Texture2D" uid="uid://btk271e0heuq2" path="res://icon.svg" id="1_6rqeu"]
+[ext_resource type="PackedScene" uid="uid://cbgekgx00saqh" path="res://src/scenes/tiles/brick/brick.tscn" id="2_oi6ry"]
+[ext_resource type="PackedScene" uid="uid://1yyg16knk828" path="res://src/scenes/tiles/brick/brick_1.tscn" id="3_nc0ks"]
+[ext_resource type="PackedScene" uid="uid://mnr7cj0swyp3" path="res://src/scenes/tiles/brick/brick_2.tscn" id="4_b2drm"]
+[ext_resource type="PackedScene" uid="uid://02pdrbagobrw" path="res://src/scenes/tiles/brick/brick_3.tscn" id="5_ugm4j"]
+[ext_resource type="PackedScene" uid="uid://c85eqp0yp3viq" path="res://src/scenes/tiles/brick/brick_4.tscn" id="6_ndx8g"]
+[ext_resource type="PackedScene" uid="uid://gjpp8mshkkyn" path="res://src/scenes/tiles/brick/brick_5.tscn" id="7_i1mhm"]
+[ext_resource type="PackedScene" uid="uid://c4dsesp8wkoqk" path="res://src/scenes/tiles/glass/glass.tscn" id="8_rie6l"]
+[ext_resource type="PackedScene" uid="uid://cupk57r2l7g3g" path="res://src/scenes/tiles/bumper/bumper.tscn" id="9_vbg5d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5altk"]
-texture = ExtResource("1_hjudt")
+texture = ExtResource("1_6rqeu")
 texture_region_size = Vector2i(64, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -23,16 +24,20 @@ texture_region_size = Vector2i(64, 32)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_socg1"]
 resource_name = "Brick"
-scenes/0/scene = ExtResource("2_ro2ca")
-scenes/1/scene = ExtResource("3_fjyh7")
-scenes/2/scene = ExtResource("4_bkwmi")
-scenes/3/scene = ExtResource("5_pf0a1")
-scenes/4/scene = ExtResource("6_k8iu3")
-scenes/5/scene = ExtResource("7_oqs8c")
+scenes/0/scene = ExtResource("2_oi6ry")
+scenes/1/scene = ExtResource("3_nc0ks")
+scenes/2/scene = ExtResource("4_b2drm")
+scenes/3/scene = ExtResource("5_ugm4j")
+scenes/4/scene = ExtResource("6_ndx8g")
+scenes/5/scene = ExtResource("7_i1mhm")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hg78f"]
 resource_name = "Glass"
-scenes/0/scene = ExtResource("8_usxk8")
+scenes/0/scene = ExtResource("8_rie6l")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ukmir"]
+resource_name = "Bumper"
+scenes/0/scene = ExtResource("9_vbg5d")
 
 [resource]
 tile_shape = 2
@@ -40,3 +45,4 @@ tile_size = Vector2i(64, 32)
 sources/1 = SubResource("TileSetScenesCollectionSource_socg1")
 sources/0 = SubResource("TileSetAtlasSource_5altk")
 sources/2 = SubResource("TileSetScenesCollectionSource_hg78f")
+sources/3 = SubResource("TileSetScenesCollectionSource_ukmir")

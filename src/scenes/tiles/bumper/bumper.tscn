@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cupk57r2l7g3g"]
+
+[ext_resource type="PackedScene" uid="uid://c88ln6b4xiui" path="res://src/scenes/tiles/tile.tscn" id="1_124ch"]
+[ext_resource type="SpriteFrames" uid="uid://dmf4rwn76jwye" path="res://src/scenes/tiles/bumper/bumper_frames.tres" id="2_b01a8"]
+[ext_resource type="AudioStream" uid="uid://degg7k3b82ou4" path="res://src/assets/sounds/SFXs/tiles/bumper/bounce1.wav" id="3_vopdp"]
+[ext_resource type="AudioStream" uid="uid://btfjxh55ug14g" path="res://src/assets/sounds/SFXs/tiles/bumper/bounce2.wav" id="4_cwkv4"]
+
+[node name="Bumper" instance=ExtResource("1_124ch")]
+health = 3
+bounciness = 1.8
+speed_adjustment = 0.0
+auto_frame = false
+
+[node name="Sprite" parent="." index="2"]
+sprite_frames = ExtResource("2_b01a8")
+frame_progress = 0.564621
+
+[node name="Break1" type="AudioStreamPlayer2D" parent="Sounds/Break" index="1"]
+stream = ExtResource("3_vopdp")
+
+[node name="Break2" type="AudioStreamPlayer2D" parent="Sounds/Break" index="2"]
+stream = ExtResource("4_cwkv4")
+
+[node name="Bounce1" type="AudioStreamPlayer2D" parent="Sounds/Bounce" index="1"]
+stream = ExtResource("3_vopdp")
+
+[node name="Bounce2" type="AudioStreamPlayer2D" parent="Sounds/Bounce" index="2"]
+stream = ExtResource("4_cwkv4")

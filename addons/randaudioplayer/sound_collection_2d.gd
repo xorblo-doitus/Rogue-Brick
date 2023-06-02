@@ -34,6 +34,8 @@ func remove(child) -> void:
 
 
 func play() -> AudioStreamPlayer2D:
+	if len(sounds) == 0:
+		return
 	var sound: AudioStreamPlayer2D = sounds.pick_random().duplicate()
 	playing.add_child(sound)
 	

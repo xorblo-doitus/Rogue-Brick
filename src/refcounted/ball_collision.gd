@@ -1,6 +1,9 @@
 extends RefCounted
 class_name BallCollision
 
+## Default speed adjustment
+const SPEED_ADJUSTMENT: float = 0.25
+
 var kinematic_collision: KinematicCollision2D
 var bounce: bool = true
 ## Deviation applied after bouncing in radians
@@ -10,7 +13,8 @@ var deviation: float = 0
 var max_angle: float = 90
 ## The part of current difference between ball's speed and current ball's moving speed
 ## that will be removed
-var speed_adjustment: float = 0.5
+var speed_adjustment: float = SPEED_ADJUSTMENT
+var bounciness: float = 1
 
 func _init(_kinematic_collision: KinematicCollision2D) -> void:
 	kinematic_collision = _kinematic_collision

@@ -1,23 +1,23 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4dsesp8wkoqk"]
 
-[ext_resource type="PackedScene" uid="uid://c88ln6b4xiui" path="res://src/scenes/tiles/tile.tscn" id="1_yqhvf"]
-[ext_resource type="SpriteFrames" uid="uid://cltp0t78x3hid" path="res://src/scenes/tiles/glass/sprite_frames.tres" id="2_5mmpq"]
-[ext_resource type="PackedScene" uid="uid://duiv8re0qy2tl" path="res://src/sounds/SFX/tile_sound.tscn" id="3_33ihq"]
-[ext_resource type="AudioStream" uid="uid://c0t8vca6m2pp6" path="res://src/assets/sounds/SFXs/tiles/glass/break1.wav" id="4_sl85k"]
-[ext_resource type="AudioStream" uid="uid://gfocit7v1idx" path="res://src/assets/sounds/SFXs/tiles/glass/break2.wav" id="5_advnx"]
-[ext_resource type="AudioStream" uid="uid://e725fssayl8c" path="res://src/assets/sounds/SFXs/tiles/glass/break3.wav" id="6_371ih"]
+[ext_resource type="PackedScene" uid="uid://c88ln6b4xiui" path="res://src/scenes/tiles/tile.tscn" id="1_ovpot"]
+[ext_resource type="SpriteFrames" uid="uid://cltp0t78x3hid" path="res://src/scenes/tiles/glass/sprite_frames.tres" id="2_52w0o"]
+[ext_resource type="PackedScene" uid="uid://duiv8re0qy2tl" path="res://src/sounds/SFX/tile_sound.tscn" id="3_cevww"]
+[ext_resource type="AudioStream" uid="uid://c0t8vca6m2pp6" path="res://src/assets/sounds/SFXs/tiles/glass/break1.wav" id="4_cvw4j"]
+[ext_resource type="AudioStream" uid="uid://gfocit7v1idx" path="res://src/assets/sounds/SFXs/tiles/glass/break2.wav" id="5_u01v6"]
+[ext_resource type="AudioStream" uid="uid://e725fssayl8c" path="res://src/assets/sounds/SFXs/tiles/glass/break3.wav" id="6_3wlm1"]
 
-[node name="Tile" instance=ExtResource("1_yqhvf")]
+[node name="Tile" instance=ExtResource("1_ovpot")]
 pass_on_break = true
 
 [node name="Sprite" parent="." index="2"]
-sprite_frames = ExtResource("2_5mmpq")
+sprite_frames = ExtResource("2_52w0o")
 
-[node name="Break1" parent="Sounds/Break" index="1" instance=ExtResource("3_33ihq")]
-stream = ExtResource("4_sl85k")
+[node name="Break1" parent="Sounds/Break" index="1" instance=ExtResource("3_cevww")]
+stream = ExtResource("4_cvw4j")
 
-[node name="Break2" parent="Sounds/Break" index="2" instance=ExtResource("3_33ihq")]
-stream = ExtResource("5_advnx")
+[node name="Break2" parent="Sounds/Break" index="2" instance=ExtResource("3_cevww")]
+stream = ExtResource("5_u01v6")
 
-[node name="Break3" parent="Sounds/Break" index="3" instance=ExtResource("3_33ihq")]
-stream = ExtResource("6_371ih")
+[node name="Break3" parent="Sounds/Break" index="3" instance=ExtResource("3_cevww")]
+stream = ExtResource("6_3wlm1")

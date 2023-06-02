@@ -57,6 +57,7 @@ func _physics_process(delta):
 		if ball_collision.bounce:
 			remainder = collision.get_remainder()
 			remainder = remainder.bounce(collision.get_normal())
+			velocity *= ball_collision.bounciness
 			bounceSFX.play()
 		
 		if ball_collision.deviation:
@@ -85,7 +86,7 @@ func _physics_process(delta):
 
 
 # Move current speed towards
-func adjust_speed(adjustment: float = 0.5) -> void:
+func adjust_speed(adjustment: float = BallCollision.SPEED_ADJUSTMENT) -> void:
 #	velocity = velocity.move_toward(
 #		velocity.normalized() * speed,
 #		adjustment * (velocity.length() - (velocity.normalized() * speed).length())

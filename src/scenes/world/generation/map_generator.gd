@@ -48,9 +48,12 @@ func generate_line() -> void:
 	for x in range(1, width - 1):
 		if current_line[x].source_id != -1:
 			if current_line[x-1].source_id < 0 and current_line[x+1].source_id < 0:
-				current_line[x].set_id(2)
+				current_line[x].set_id(2, 0)
 			elif (current_line[x-1].source_id > -1) != (current_line[x+1].source_id > -1):
-				current_line[x].set_id(-2,5)
+				if randf() > 0.2:
+					current_line[x].set_id(-2,5)
+				else:
+					current_line[x].set_id(3,0)
 
 func pop() -> Array[TileInfo]:
 	var result = buffer.pop_front()

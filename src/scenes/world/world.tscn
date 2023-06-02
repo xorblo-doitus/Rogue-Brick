@@ -12,6 +12,7 @@ script = ExtResource("1_cymi7")
 
 [node name="basic_ball" parent="." instance=ExtResource("2_ugybi")]
 position = Vector2(589, 613)
+max_speed = 1500.0
 size = 16.0
 
 [node name="Fence" parent="." instance=ExtResource("3_oa075")]
