@@ -1,7 +1,7 @@
 extends TileMap
 
 
-var generator: MapGenerator = MapGenerator.new()
+var generator: MapGenerator = MapGenerator.new(self)
 
 var _distance = 0
 
@@ -41,7 +41,7 @@ func grow(amount: int = 1, animate: bool = true) -> void:
 		else:
 			position = Vector2(position.x, _distance * tile_set.tile_size.y)
 		
-		var line: Array[TileInfo] = generator.pop()
+		var line: Array[TileInfo] = generator.get_next_line()
 		
 		for x in len(line):
 			set_cell(0, Vector2i(x, y), line[x].source_id, Vector2.ZERO, line[x].sub_id)
