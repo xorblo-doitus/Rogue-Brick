@@ -1,4 +1,5 @@
 @tool
+@icon("icons/AudioStreamPlayer.svg")
 extends Node
 class_name SoundCollection
 
@@ -7,7 +8,13 @@ class_name SoundCollection
 ## Used to trigger [method play_debug] from the editor
 @export var test_sound: bool = false:
 	set(new):
-		play_debug()
+		test_sound = new
+		if new:
+			play_debug()
+## If true, empty
+@export var ignore_empty: bool = false:
+	set(new):
+		ignore_empty = new
 
 var sounds: Array[AudioStreamPlayer] = []
 var playing: Node
@@ -15,7 +22,7 @@ var playing: Node
 func _init() -> void:
 	playing = Node.new()
 	playing.name = "Playing"
-	add_child(playing)
+	add_child(playing, false, INTERNAL_MODE_BACK)
 	
 	child_entered_tree.connect(add)
 	child_exiting_tree.connect(remove)
@@ -34,6 +41,10 @@ func remove(child) -> void:
 
 
 func play() -> AudioStreamPlayer:
+	if len(sounds) == 0:
+		if not ignore_empty:
+			push_error("SoundCollection has not any AudioStreamPlayer child.")
+		return
 	var sound: AudioStreamPlayer = sounds.pick_random().duplicate()
 	playing.add_child(sound)
 	
@@ -48,6 +59,7 @@ func play() -> AudioStreamPlayer:
 
 ## Play each sound variant with the highest random cases
 func play_debug() -> void:
+	play()
 	for sound in sounds:
 		var clone: AudioStreamPlayer = sound.duplicate()
 		playing.add_child(clone)
@@ -61,5 +73,10 @@ func play_debug() -> void:
 				clone.volume_db = init_volume + volume_range * volume_mul
 				clone.play()
 				await clone.finished
+				
+				if not test_sound:
+					clone.queue_free()
+					return
 		
 		clone.queue_free()
+		test_sound = false

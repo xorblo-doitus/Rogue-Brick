@@ -1,4 +1,5 @@
 @tool
+@icon("icons/AudioStreamPlayer3D.svg")
 extends Node3D
 class_name SoundCollection3D
 
@@ -7,7 +8,13 @@ class_name SoundCollection3D
 ## Used to trigger [method play_debug] from the editor
 @export var test_sound: bool = false:
 	set(new):
-		play_debug()
+		test_sound = new
+		if new:
+			play_debug()
+## If true, empty
+@export var ignore_empty: bool = false:
+	set(new):
+		ignore_empty = new
 
 var sounds: Array[AudioStreamPlayer3D] = []
 var playing: Node3D
@@ -15,7 +22,7 @@ var playing: Node3D
 func _init() -> void:
 	playing = Node3D.new()
 	playing.name = "Playing"
-	add_child(playing)
+	add_child(playing, false, INTERNAL_MODE_BACK)
 	
 	child_entered_tree.connect(add)
 	child_exiting_tree.connect(remove)
@@ -34,6 +41,10 @@ func remove(child) -> void:
 
 
 func play() -> AudioStreamPlayer3D:
+	if len(sounds) == 0:
+		if not ignore_empty:
+			push_error("SoundCollection3D has not any AudioStreamPlayer3D child.")
+		return
 	var sound: AudioStreamPlayer3D = sounds.pick_random().duplicate()
 	playing.add_child(sound)
 	
@@ -48,6 +59,7 @@ func play() -> AudioStreamPlayer3D:
 
 ## Play each sound variant with the highest random cases
 func play_debug() -> void:
+	play()
 	for sound in sounds:
 		var clone: AudioStreamPlayer3D = sound.duplicate()
 		playing.add_child(clone)
@@ -61,5 +73,10 @@ func play_debug() -> void:
 				clone.volume_db = init_volume + volume_range * volume_mul
 				clone.play()
 				await clone.finished
+				
+				if not test_sound:
+					clone.queue_free()
+					return
 		
 		clone.queue_free()
+		test_sound = false
