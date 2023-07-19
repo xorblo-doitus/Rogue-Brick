@@ -3,4 +3,4 @@
 A Brick Breaker, but rogue like.
 
 # Status
-In development
+Development halted
