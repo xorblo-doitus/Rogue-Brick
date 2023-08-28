@@ -49,6 +49,7 @@ func _physics_process(delta) -> void:
 	velocity = (stop - start) / delta
 
 
+@warning_ignore("unused_parameter")
 func handle_ball_collision(ball: Ball, collision: BallCollision) -> void:
 	collision.max_angle = MAX_ANGLE
 	

@@ -66,7 +66,7 @@ animations = [{
 [node name="Sprite" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_vyy65")
 
-[node name="Break1" parent="Sounds/Break" index="1" instance=ExtResource("8_daoff")]
+[node name="Break1" parent="Sounds/Break" index="0" instance=ExtResource("8_daoff")]
 
-[node name="Break2" parent="Sounds/Break" index="2" instance=ExtResource("8_daoff")]
+[node name="Break2" parent="Sounds/Break" index="1" instance=ExtResource("8_daoff")]
 stream = ExtResource("9_8pm8j")

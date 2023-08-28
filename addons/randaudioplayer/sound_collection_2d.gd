@@ -3,7 +3,7 @@
 extends Node2D
 class_name SoundCollection2D
 
-@export_range(0, 20, 0.1) var volume_range: float = 1
+@export_range(0, 20) var volume_range: float = 1
 @export_range(0, 1, 0.1) var pitch_range: float = 0.1
 ## Used to trigger [method play_debug] from the editor
 @export var test_sound: bool = false:
@@ -48,8 +48,8 @@ func play() -> AudioStreamPlayer2D:
 	var sound: AudioStreamPlayer2D = sounds.pick_random().duplicate()
 	playing.add_child(sound)
 	
-	sound.volume_db = randf_range(-volume_range, volume_range)
-	sound.pitch_scale = 1 + randf_range(-pitch_range, pitch_range)
+	sound.volume_db = linear_to_db(db_to_linear(sound.volume_db) + randf_range(-volume_range, volume_range))
+	sound.pitch_scale = sound.pitch_scale + randf_range(-pitch_range, pitch_range)
 	
 	sound.finished.connect(sound.queue_free)
 	
@@ -65,12 +65,12 @@ func play_debug() -> void:
 		playing.add_child(clone)
 		
 		var init_pitch = clone.pitch_scale
-		var init_volume = clone.volume_db
+		var init_volume_linear = db_to_linear(clone.volume_db)
 		
 		for pitch_mul in range(-1, 2):
 			for volume_mul in range(-1, 2):
 				clone.pitch_scale = init_pitch + pitch_range * pitch_mul
-				clone.volume_db = init_volume + volume_range * volume_mul
+				clone.volume_db = linear_to_db(init_volume_linear + volume_range * volume_mul)
 				clone.play()
 				await clone.finished
 				

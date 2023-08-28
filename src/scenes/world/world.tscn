@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciceafugib0p4"]
+[gd_scene load_steps=9 format=3 uid="uid://ciceafugib0p4"]
 
 [ext_resource type="Script" path="res://src/scenes/world/world.gd" id="1_cymi7"]
 [ext_resource type="PackedScene" uid="uid://c06w0vwoxco6x" path="res://src/scenes/balls/basic_ball/basic_ball.tscn" id="2_ugybi"]
@@ -6,6 +6,8 @@
 [ext_resource type="TileSet" uid="uid://ba77edulvbi6c" path="res://src/scenes/world/main_tile_set.tres" id="4_a3yy0"]
 [ext_resource type="Script" path="res://src/scenes/world/proxy_tilemap.gd" id="5_4y24y"]
 [ext_resource type="PackedScene" uid="uid://ds4g8d318di3c" path="res://src/scenes/paddles/basic_paddle/basic_paddle.tscn" id="6_6aes6"]
+[ext_resource type="PackedScene" uid="uid://gocrldq4i1bl" path="res://addons/complete_settings/scenes/settings/example.tscn" id="7_w41gy"]
+[ext_resource type="Texture2D" uid="uid://b27kwf8d8fvxi" path="res://src/assets/ui/icons/settings.svg" id="8_c8gah"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cymi7")
@@ -31,4 +33,18 @@ autostart = true
 position = Vector2(698, 755)
 deviation_amount = 0.785
 
+[node name="Settings" parent="." instance=ExtResource("7_w41gy")]
+visible = false
+offset_right = 1366.0
+offset_bottom = 768.0
+
+[node name="OpenSettings" type="Button" parent="."]
+offset_left = 1334.0
+offset_top = 736.0
+offset_right = 1358.0
+offset_bottom = 760.0
+toggle_mode = true
+icon = ExtResource("8_c8gah")
+
 [connection signal="timeout" from="TileMap/Spawn" to="TileMap" method="grow"]
+[connection signal="pressed" from="OpenSettings" to="." method="_on_open_settings_pressed"]

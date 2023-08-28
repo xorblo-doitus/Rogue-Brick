@@ -41,7 +41,9 @@ animation = &"1"
 [node name="Break" type="Node2D" parent="Sounds"]
 script = ExtResource("4_4xhrw")
 volume_range = 0.1
+ignore_empty = true
 
 [node name="Bounce" type="Node2D" parent="Sounds"]
 script = ExtResource("4_4xhrw")
 volume_range = 0.1
+ignore_empty = true

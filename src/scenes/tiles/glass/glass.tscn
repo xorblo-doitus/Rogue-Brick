@@ -13,11 +13,11 @@ pass_on_break = true
 [node name="Sprite" parent="." index="2"]
 sprite_frames = ExtResource("2_52w0o")
 
-[node name="Break1" parent="Sounds/Break" index="1" instance=ExtResource("3_cevww")]
+[node name="Break1" parent="Sounds/Break" index="0" instance=ExtResource("3_cevww")]
 stream = ExtResource("4_cvw4j")
 
-[node name="Break2" parent="Sounds/Break" index="2" instance=ExtResource("3_cevww")]
+[node name="Break2" parent="Sounds/Break" index="1" instance=ExtResource("3_cevww")]
 stream = ExtResource("5_u01v6")
 
-[node name="Break3" parent="Sounds/Break" index="3" instance=ExtResource("3_cevww")]
+[node name="Break3" parent="Sounds/Break" index="2" instance=ExtResource("3_cevww")]
 stream = ExtResource("6_3wlm1")

@@ -46,6 +46,10 @@ debug_rotate={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/keybind_remap/translations/keybind_remap.en.translation", "res://addons/keybind_remap/translations/keybind_remap.fr.translation", "res://addons/complete_settings/translations/complete_settings.en.translation", "res://addons/complete_settings/translations/complete_settings.fr.translation", "res://src/assets/translations/translations.en.translation", "res://src/assets/translations/translations.fr.translation")
+
 [layer_names]
 
 2d_physics/layer_1="world"

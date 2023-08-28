@@ -9,7 +9,7 @@ func _ready() -> void:
 	add_child(preload("res://src/porting/html_ui.tscn").instantiate())
 	
 	# Fix the window size bug of Godot 4 (automatically readjust size)
-	JavaScriptBridge.eval("document.querySelector("#canvas").height = 0;")
+	JavaScriptBridge.eval("""document.querySelector("#canvas").height = 0;""")
 	
 #	var true_size: Vector2 = Vector2(
 #		JavaScriptBridge.eval("""document.querySelector("#canvas").width"""),

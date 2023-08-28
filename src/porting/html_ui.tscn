@@ -11,6 +11,7 @@ func _on_button_up() -> void:
 "
 
 [node name="HTML_UI" type="Control"]
+z_index = 50
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,16 +21,13 @@ grow_vertical = 2
 
 [node name="Fullscreen" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -25.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 0
+offset_left = 8.0
+offset_top = -39.0
+offset_right = 43.0
+offset_bottom = -8.0
 grow_vertical = 0
 text = "F11"
 script = SubResource("GDScript_t60qd")

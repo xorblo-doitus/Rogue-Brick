@@ -1,5 +1,6 @@
 *.backup
 *.aup3
+override.cfg
 
 # I don't know why, but Godot leave some temporary files
 *.tmp

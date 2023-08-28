@@ -7,7 +7,7 @@ var _distance = 0
 
 func _init():
 	child_entered_tree.connect(add)
-	position.x = -tile_set.tile_size.x / 2
+	position.x = -tile_set.tile_size.x / 2.
 	grow(10, false)
 
 
