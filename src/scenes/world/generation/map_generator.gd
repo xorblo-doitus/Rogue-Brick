@@ -59,7 +59,6 @@ func get_neighbors(origin: Vector2i) -> Array[TileInfo]:
 	var result: Array[TileInfo] = []
 	for pos in tile_map.get_surrounding_cells(origin):
 		result.append(get_cell(pos))
-	print(len(result))
 	return result
 func get_neighbors_xy(x: int, y: int) -> Array[TileInfo]:
 	return get_neighbors(Vector2i(x, y))
