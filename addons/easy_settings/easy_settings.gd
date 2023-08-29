@@ -59,7 +59,6 @@ static func unbind_listener(setting: String, listener: ESL) -> void:
 
 ## Save settings to [code]override.cfg[/code] so it's loaded on next startup.
 static  func save_settings() -> void:
-	print("saving")
 	ProjectSettings.save_custom("override.cfg")
 
 
